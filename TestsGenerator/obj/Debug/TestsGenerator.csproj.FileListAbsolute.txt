@@ -1,0 +1,6 @@
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\bin\Debug\TestsGenerator.dll
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\bin\Debug\TestsGenerator.pdb
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\obj\Debug\TestsGenerator.csprojAssemblyReference.cache
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\obj\Debug\TestsGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\obj\Debug\TestsGenerator.dll
+C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\obj\Debug\TestsGenerator.pdb

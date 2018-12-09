@@ -1,0 +1,9 @@
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\bin\Debug\ConsoleApplication.exe
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\bin\Debug\ConsoleApplication.pdb
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\bin\Debug\TestsGenerator.dll
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\bin\Debug\TestsGenerator.pdb
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\obj\Debug\ConsoleApplication.csprojAssemblyReference.cache
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\obj\Debug\ConsoleApplication.csproj.CoreCompileInputs.cache
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\obj\Debug\ConsoleApplication.csproj.CopyComplete
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\obj\Debug\ConsoleApplication.exe
+C:\Users\Gurinov\Desktop\TestsGenerator\ConsoleApplication\obj\Debug\ConsoleApplication.pdb
