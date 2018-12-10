@@ -5,10 +5,20 @@ namespace TestsGenerator.Action
 {
     public class FileWriter
     {
-        public void WriteClassesFromFile(Class testClassInMemory, string outputDirectoryPath)
+        private string outputDirectory;
+
+        public FileWriter(string outputDirectory)
         {
-            string filePath = $"{outputDirectoryPath}\\{testClassInMemory.ClassName}";
-            File.WriteAllText(filePath, testClassInMemory.ClassData);
+            this.outputDirectory = outputDirectory;
+        }
+        
+        public async void WriteClassesFromFile(Class testClassInMemory)
+        {
+            string filePath = $"{outputDirectory}\\{testClassInMemory.ClassName}";
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                await writer.WriteAsync(testClassInMemory.ClassData);
+            }
         }
     }
 }

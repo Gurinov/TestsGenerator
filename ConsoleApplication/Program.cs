@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TestsGenerator.Action;
+using TestsGenerator.model;
 
 namespace ConsoleApplication
 {
@@ -8,19 +9,18 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            IEnumerable<string> filePaths = new[]
+            List<string> filePaths = new List<string>()
             {
                 @"C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\Action\FileReader.cs",
                 @"C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\Action\FileWriter.cs",
                 @"C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\model\Class.cs",
                 @"C:\Users\Gurinov\Desktop\TestsGenerator\TestsGenerator\model\Params.cs"
             };
-            FileReader fr = new FileReader(filePaths, 2);
-            IEnumerable<string> x = fr.ReadClassesFromFile();
-            foreach (var VARIABLE in x)
-            {
-                Console.Out.WriteLine(VARIABLE);
-            }
+            TestsGenerator.TestsGenerator generator =
+                new TestsGenerator.TestsGenerator(filePaths, new Params(@"C:\Users\Gurinov\Desktop\q", 2, 2, 2));
+            FileWriter asyncWriter = new FileWriter(@"C:\Users\Gurinov\Desktop\q");
+            generator.Generate(asyncWriter).Wait();
+            Console.WriteLine("Success");
         }
     }
 }

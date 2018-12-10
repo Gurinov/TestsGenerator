@@ -21,14 +21,18 @@
           <e p="FileWriter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Generator.cs" t="Include" />
         <e p="model" t="Include">
           <e p="Class.cs" t="Include" />
+          <e p="ClassInfo.cs" t="Include" />
           <e p="params.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="SyntaxProcessor.cs" t="Include" />
         <e p="TestsGenerator.cs" t="Include" />
         <e p="TestsGenerator.csproj" t="IncludeRecursive" />
       </e>
