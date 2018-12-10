@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using TestsGenerator.model;
 
@@ -12,12 +13,15 @@ namespace TestsGenerator.Action
             this.outputDirectory = outputDirectory;
         }
         
-        public async void WriteClassesFromFile(Class testClassInMemory)
+        public async void WriteClassesFromFile(List<Class> testClasses)
         {
-            string filePath = $"{outputDirectory}\\{testClassInMemory.ClassName}";
-            using (StreamWriter writer = new StreamWriter(filePath))
+            foreach (var thisClass in testClasses)
             {
-                await writer.WriteAsync(testClassInMemory.ClassData);
+                string filePath = $"{outputDirectory}\\{thisClass.ClassName}";
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    await writer.WriteAsync(thisClass.ClassData);
+                }       
             }
         }
     }

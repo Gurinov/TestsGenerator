@@ -9,23 +9,7 @@ namespace TestsGenerator
 {
     public class Generator
     {
-        public Class GetTemplate(string sourceCode)
-        {
-            List<Class> templates = GetTestTemplates(sourceCode);
-            if (templates.Count != 0)
-            {
-                string fileName = templates[0].ClassName;
-                string innerText = "";
-                foreach (Class template in templates)
-                {
-                    innerText += template.ClassData;
-                }
-                return new Class(fileName, innerText);
-            }
-            return null;
-        }
-
-        private List<Class> GetTestTemplates(string sourceCode)
+        public List<Class> GetTemplate(string sourceCode)
         {
             SyntaxProcessor syntaxProcessor = new SyntaxProcessor();
             List<ClassInfo> classInfos = syntaxProcessor.Process(sourceCode);

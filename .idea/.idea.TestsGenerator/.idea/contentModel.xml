@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\gurin\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\gurin\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_TestsGenerator.-1931489829.00" t="ExcludeRecursive" />
-    <e p="C:\Users\gurin\Desktop\Mpp\TestsGenerator" t="IncludeFlat">
+    <e p="C:\Users\Gurinov\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Gurinov\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Gurinov\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_TestsGenerator.992078513.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Gurinov\Desktop\TestsGenerator" t="IncludeFlat">
       <e p="ConsoleApplication" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="ConsoleApplication.csproj" t="IncludeRecursive" />
@@ -22,6 +23,7 @@
         </e>
         <e p="TestProject.csproj" t="IncludeRecursive" />
         <e p="Tests.cs" t="Include" />
+        <e p="TwoClassInOneFile.cs" t="Include" />
       </e>
       <e p="TestsGenerator" t="IncludeRecursive">
         <e p="Action" t="Include">

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NUnit.Framework;
-using TestsGenerator;
 using TestsGenerator.Action;
 using TestsGenerator.model;
 
@@ -41,19 +38,25 @@ namespace TestProject
             _asyncWriter = new FileWriter(_params.OutputDirectoryPath);
         }
 
-        [Test]
-        public void GenerateTests()
+        private void DaleteFile()
         {
-            int prevCountofFiles = Directory.GetFiles(_resultPath).Length;
-            _testsGenerator.Generate(_asyncWriter).Wait();
-            int currentCountOfFiles = Directory.GetFiles(_resultPath).Length;
-            int expectedCount = prevCountofFiles + _filePaths.Count;
-            Assert.AreEqual(expectedCount, currentCountOfFiles);
             foreach(string filePath in _filePaths)
             {
                 string pathToResFile = _resultPath + "\\" + Path.GetFileNameWithoutExtension(filePath) + "Tests.cs";
                 File.Delete(pathToResFile);
             }
+        }
+
+        [Test]
+        public void GenerateTests()
+        {
+            DaleteFile();
+            int startCountFiles = Directory.GetFiles(_resultPath).Length;
+            _testsGenerator.Generate(_asyncWriter).Wait();
+            int currentCountFiles = Directory.GetFiles(_resultPath).Length;
+            int expectedCount = startCountFiles + _filePaths.Count;
+            Assert.AreEqual(expectedCount, currentCountFiles);
+            DaleteFile();
         }
         
         [Test]
@@ -66,11 +69,27 @@ namespace TestProject
             Directory.Delete(newResultPath);
         }
         
+        
         [Test]
-        public void GeneratorReturnNull()
+        public void TwoClassInOneFile()
         {
-            Generator generator = new Generator();
-            Assert.IsNull(generator.GetTemplate(""));
+            DaleteFile();
+            List<string> filePaths = new List<string>
+            {
+                _fullPath + @"\..\..\TwoClassInOneFile.cs"
+            };
+            TestsGenerator.TestsGenerator generator =
+                new TestsGenerator.TestsGenerator(filePaths, _params);
+            FileWriter asyncWriter = new FileWriter(_params.OutputDirectoryPath);
+            
+            int startCountFiles = Directory.GetFiles(_resultPath).Length;
+            generator.Generate(asyncWriter).Wait();
+            int currentCountFiles = Directory.GetFiles(_resultPath).Length;
+            int expectedCount = startCountFiles + filePaths.Count + 1;
+            Assert.AreEqual(expectedCount, currentCountFiles);
+            File.Delete(_resultPath + @"\FirstClassTest.cs");
+            File.Delete(_resultPath + @"\SecondClassTest.cs");
         }
+        
     }
 }

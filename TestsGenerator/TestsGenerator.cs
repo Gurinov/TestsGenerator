@@ -42,10 +42,10 @@ namespace TestsGenerator
             TransformBlock<string, string> readingBlock = 
                 new TransformBlock<string, string>(new Func<string, Task<string>>(asyncReader.ReadClassesFromFile), maxReadableFilesTasks);
 
-            TransformBlock<string, Class> processingBlock =
-                new TransformBlock<string, Class>(new Func<string, Class>(generator.GetTemplate), maxProcessableTasks);
+            TransformBlock<string, List<Class>> processingBlock =
+                new TransformBlock<string, List<Class>>(new Func<string, List<Class>>(generator.GetTemplate), maxProcessableTasks);
 
-            ActionBlock<Class> writingBlock = new ActionBlock<Class>(
+            ActionBlock<List<Class>> writingBlock = new ActionBlock<List<Class>>(
                 (classTemplate) => writer.WriteClassesFromFile(classTemplate), maxWritableTasks);
 
             readingBlock.LinkTo(processingBlock, linkOptions);
