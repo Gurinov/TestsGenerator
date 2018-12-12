@@ -2,13 +2,13 @@ namespace TestsGenerator.model
 {
     public class Class
     {
-        public string ClassName { get; }
-        public string ClassData { get; }
+        public string Name { get; }
+        public string Data { get; }
 
-        public Class(string className, string classData)
+        public Class(string name, string data)
         {
-            ClassName = className;
-            ClassData = classData;
+            Name = name;
+            Data = data;
         }
     }
 }

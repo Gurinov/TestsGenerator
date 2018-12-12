@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NUnit.Framework;
+using TestsGenerator;
 using TestsGenerator.Action;
 using TestsGenerator.model;
 
@@ -87,9 +89,46 @@ namespace TestProject
             int currentCountFiles = Directory.GetFiles(_resultPath).Length;
             int expectedCount = startCountFiles + filePaths.Count + 1;
             Assert.AreEqual(expectedCount, currentCountFiles);
-            File.Delete(_resultPath + @"\FirstClassTest.cs");
-            File.Delete(_resultPath + @"\SecondClassTest.cs");
+            File.Delete(_resultPath + @"\FirstClassTests.cs");
+            File.Delete(_resultPath + @"\SecondClassTests.cs");
         }
         
+        [Test]
+        public void FileIsCreatedTest()
+        {
+            DaleteFile();
+            _testsGenerator.Generate(_asyncWriter).Wait();
+            foreach(string filePath in _filePaths)
+            {
+                string pathToResFile = _resultPath + "\\" + Path.GetFileNameWithoutExtension(filePath) + "Tests.cs";
+                Assert.True(File.Exists(pathToResFile));
+                File.Delete(pathToResFile);
+            }
+        }
+        
+        [Test]
+        public void ClassCountInFileTest()
+        {
+            using (FileStream fstream = File.OpenRead(_fullPath + @"\..\..\..\TestsGenerator\TestsGenerator.cs"))
+            {
+                byte[] array = new byte[fstream.Length];
+                fstream.Read(array, 0, array.Length);
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
+                Generator generator = new Generator();
+                Assert.AreEqual(generator.GetTemplate(textFromFile).Count, 1);
+            }
+        }
+        [Test]
+        public void ClassFindInFileTest()
+        {
+            using (FileStream fstream = File.OpenRead(_fullPath + @"\..\..\..\TestsGenerator\TestsGenerator.cs"))
+            {
+                byte[] array = new byte[fstream.Length];
+                fstream.Read(array, 0, array.Length);
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
+                Generator generator = new Generator();
+                Assert.AreEqual(generator.GetTemplate(textFromFile).First().Name, "TestsGeneratorTests.cs");
+            }
+        }
     }
 }

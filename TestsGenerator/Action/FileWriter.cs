@@ -17,10 +17,10 @@ namespace TestsGenerator.Action
         {
             foreach (var thisClass in testClasses)
             {
-                string filePath = $"{outputDirectory}\\{thisClass.ClassName}";
+                string filePath = $"{outputDirectory}\\{thisClass.Name}";
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    await writer.WriteAsync(thisClass.ClassData);
+                    await writer.WriteAsync(thisClass.Data);
                 }       
             }
         }
